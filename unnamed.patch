@@ -1,0 +1,580 @@
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- pom.xml	(date 1603458301273)
++++ pom.xml	(date 1603458301273)
+@@ -0,0 +1,21 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++	<groupId>com.atguigu.gulimall</groupId>
++	<artifactId>gulimall</artifactId>
++	<version>0.0.1-SNAPSHOT</version>
++	<name>gulimall</name>
++	<description>谷粒商城-聚合服务</description>
++	<packaging>pom</packaging>
++
++	<modules>
++		<module>gulimall-coupon</module>
++		<module>gulimall-order</module>
++		<module>gulimall-member</module>
++		<module>gulimall-product</module>
++		<module>gulimall-ware</module>
++	</modules>
++
++
++</project>
+Index: gulimall-coupon/src/main/java/com/atguigu/gulimall/gulimallcoupon/GulimallCouponApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-coupon/src/main/java/com/atguigu/gulimall/gulimallcoupon/GulimallCouponApplication.java	(date 1603457992639)
++++ gulimall-coupon/src/main/java/com/atguigu/gulimall/gulimallcoupon/GulimallCouponApplication.java	(date 1603457992639)
+@@ -0,0 +1,13 @@
++package com.atguigu.gulimall.gulimallcoupon;
++
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++
++@SpringBootApplication
++public class GulimallCouponApplication {
++
++	public static void main(String[] args) {
++		SpringApplication.run(GulimallCouponApplication.class, args);
++	}
++
++}
+Index: gulimall-coupon/src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- gulimall-coupon/src/main/resources/application.properties	(date 1603457992641)
++++ gulimall-coupon/src/main/resources/application.properties	(date 1603457992641)
+@@ -0,0 +1,1 @@
++
+Index: gulimall-coupon/src/test/java/com/atguigu/gulimall/gulimallcoupon/GulimallCouponApplicationTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-coupon/src/test/java/com/atguigu/gulimall/gulimallcoupon/GulimallCouponApplicationTests.java	(date 1603457992633)
++++ gulimall-coupon/src/test/java/com/atguigu/gulimall/gulimallcoupon/GulimallCouponApplicationTests.java	(date 1603457992633)
+@@ -0,0 +1,13 @@
++package com.atguigu.gulimall.gulimallcoupon;
++
++import org.junit.jupiter.api.Test;
++import org.springframework.boot.test.context.SpringBootTest;
++
++@SpringBootTest
++class GulimallCouponApplicationTests {
++
++	@Test
++	void contextLoads() {
++	}
++
++}
+Index: gulimall-coupon/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-coupon/pom.xml	(date 1603457992645)
++++ gulimall-coupon/pom.xml	(date 1603457992645)
+@@ -0,0 +1,66 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++	<parent>
++		<groupId>org.springframework.boot</groupId>
++		<artifactId>spring-boot-starter-parent</artifactId>
++		<version>2.3.4.RELEASE</version>
++		<relativePath/> <!-- lookup parent from repository -->
++	</parent>
++	<groupId>com.atguigu.gulimall</groupId>
++	<artifactId>gulimall-coupon</artifactId>
++	<version>0.0.1-SNAPSHOT</version>
++	<name>gulimall-coupon</name>
++	<description>谷粒商城-优惠券服务</description>
++
++	<properties>
++		<java.version>1.8</java.version>
++		<spring-cloud.version>Hoxton.SR8</spring-cloud.version>
++	</properties>
++
++	<dependencies>
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-web</artifactId>
++		</dependency>
++		<dependency>
++			<groupId>org.springframework.cloud</groupId>
++			<artifactId>spring-cloud-starter-openfeign</artifactId>
++		</dependency>
++
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-test</artifactId>
++			<scope>test</scope>
++			<exclusions>
++				<exclusion>
++					<groupId>org.junit.vintage</groupId>
++					<artifactId>junit-vintage-engine</artifactId>
++				</exclusion>
++			</exclusions>
++		</dependency>
++	</dependencies>
++
++	<dependencyManagement>
++		<dependencies>
++			<dependency>
++				<groupId>org.springframework.cloud</groupId>
++				<artifactId>spring-cloud-dependencies</artifactId>
++				<version>${spring-cloud.version}</version>
++				<type>pom</type>
++				<scope>import</scope>
++			</dependency>
++		</dependencies>
++	</dependencyManagement>
++
++	<build>
++		<plugins>
++			<plugin>
++				<groupId>org.springframework.boot</groupId>
++				<artifactId>spring-boot-maven-plugin</artifactId>
++			</plugin>
++		</plugins>
++	</build>
++
++</project>
+Index: gulimall-member/src/main/java/com/atguigu/gulimall/gulimallmember/GulimallMemberApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-member/src/main/java/com/atguigu/gulimall/gulimallmember/GulimallMemberApplication.java	(date 1603457937258)
++++ gulimall-member/src/main/java/com/atguigu/gulimall/gulimallmember/GulimallMemberApplication.java	(date 1603457937258)
+@@ -0,0 +1,13 @@
++package com.atguigu.gulimall.gulimallmember;
++
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++
++@SpringBootApplication
++public class GulimallMemberApplication {
++
++	public static void main(String[] args) {
++		SpringApplication.run(GulimallMemberApplication.class, args);
++	}
++
++}
+Index: gulimall-member/src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- gulimall-member/src/main/resources/application.properties	(date 1603457937260)
++++ gulimall-member/src/main/resources/application.properties	(date 1603457937260)
+@@ -0,0 +1,1 @@
++
+Index: gulimall-member/src/test/java/com/atguigu/gulimall/gulimallmember/GulimallMemberApplicationTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-member/src/test/java/com/atguigu/gulimall/gulimallmember/GulimallMemberApplicationTests.java	(date 1603457937252)
++++ gulimall-member/src/test/java/com/atguigu/gulimall/gulimallmember/GulimallMemberApplicationTests.java	(date 1603457937252)
+@@ -0,0 +1,13 @@
++package com.atguigu.gulimall.gulimallmember;
++
++import org.junit.jupiter.api.Test;
++import org.springframework.boot.test.context.SpringBootTest;
++
++@SpringBootTest
++class GulimallMemberApplicationTests {
++
++	@Test
++	void contextLoads() {
++	}
++
++}
+Index: gulimall-member/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-member/pom.xml	(date 1603457937262)
++++ gulimall-member/pom.xml	(date 1603457937262)
+@@ -0,0 +1,66 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++	<parent>
++		<groupId>org.springframework.boot</groupId>
++		<artifactId>spring-boot-starter-parent</artifactId>
++		<version>2.3.4.RELEASE</version>
++		<relativePath/> <!-- lookup parent from repository -->
++	</parent>
++	<groupId>com.atguigu.gulimall</groupId>
++	<artifactId>gulimall-member</artifactId>
++	<version>0.0.1-SNAPSHOT</version>
++	<name>gulimall-member</name>
++	<description>谷粒商城-会员服务</description>
++
++	<properties>
++		<java.version>1.8</java.version>
++		<spring-cloud.version>Hoxton.SR8</spring-cloud.version>
++	</properties>
++
++	<dependencies>
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-web</artifactId>
++		</dependency>
++		<dependency>
++			<groupId>org.springframework.cloud</groupId>
++			<artifactId>spring-cloud-starter-openfeign</artifactId>
++		</dependency>
++
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-test</artifactId>
++			<scope>test</scope>
++			<exclusions>
++				<exclusion>
++					<groupId>org.junit.vintage</groupId>
++					<artifactId>junit-vintage-engine</artifactId>
++				</exclusion>
++			</exclusions>
++		</dependency>
++	</dependencies>
++
++	<dependencyManagement>
++		<dependencies>
++			<dependency>
++				<groupId>org.springframework.cloud</groupId>
++				<artifactId>spring-cloud-dependencies</artifactId>
++				<version>${spring-cloud.version}</version>
++				<type>pom</type>
++				<scope>import</scope>
++			</dependency>
++		</dependencies>
++	</dependencyManagement>
++
++	<build>
++		<plugins>
++			<plugin>
++				<groupId>org.springframework.boot</groupId>
++				<artifactId>spring-boot-maven-plugin</artifactId>
++			</plugin>
++		</plugins>
++	</build>
++
++</project>
+Index: gulimall-order/src/main/java/com/atguigu/gulimall/gulimallorder/GulimallOrderApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-order/src/main/java/com/atguigu/gulimall/gulimallorder/GulimallOrderApplication.java	(date 1603457886859)
++++ gulimall-order/src/main/java/com/atguigu/gulimall/gulimallorder/GulimallOrderApplication.java	(date 1603457886859)
+@@ -0,0 +1,13 @@
++package com.atguigu.gulimall.gulimallorder;
++
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++
++@SpringBootApplication
++public class GulimallOrderApplication {
++
++	public static void main(String[] args) {
++		SpringApplication.run(GulimallOrderApplication.class, args);
++	}
++
++}
+Index: gulimall-order/src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- gulimall-order/src/main/resources/application.properties	(date 1603457886861)
++++ gulimall-order/src/main/resources/application.properties	(date 1603457886861)
+@@ -0,0 +1,1 @@
++
+Index: gulimall-order/src/test/java/com/atguigu/gulimall/gulimallorder/GulimallOrderApplicationTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-order/src/test/java/com/atguigu/gulimall/gulimallorder/GulimallOrderApplicationTests.java	(date 1603457886853)
++++ gulimall-order/src/test/java/com/atguigu/gulimall/gulimallorder/GulimallOrderApplicationTests.java	(date 1603457886853)
+@@ -0,0 +1,13 @@
++package com.atguigu.gulimall.gulimallorder;
++
++import org.junit.jupiter.api.Test;
++import org.springframework.boot.test.context.SpringBootTest;
++
++@SpringBootTest
++class GulimallOrderApplicationTests {
++
++	@Test
++	void contextLoads() {
++	}
++
++}
+Index: gulimall-order/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-order/pom.xml	(date 1603457886864)
++++ gulimall-order/pom.xml	(date 1603457886864)
+@@ -0,0 +1,66 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++	<parent>
++		<groupId>org.springframework.boot</groupId>
++		<artifactId>spring-boot-starter-parent</artifactId>
++		<version>2.3.4.RELEASE</version>
++		<relativePath/> <!-- lookup parent from repository -->
++	</parent>
++	<groupId>com.atguigu.gulimall</groupId>
++	<artifactId>gulimall-order</artifactId>
++	<version>0.0.1-SNAPSHOT</version>
++	<name>gulimall-order</name>
++	<description>谷粒商城-订单服务</description>
++
++	<properties>
++		<java.version>1.8</java.version>
++		<spring-cloud.version>Hoxton.SR8</spring-cloud.version>
++	</properties>
++
++	<dependencies>
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-web</artifactId>
++		</dependency>
++		<dependency>
++			<groupId>org.springframework.cloud</groupId>
++			<artifactId>spring-cloud-starter-openfeign</artifactId>
++		</dependency>
++
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-test</artifactId>
++			<scope>test</scope>
++			<exclusions>
++				<exclusion>
++					<groupId>org.junit.vintage</groupId>
++					<artifactId>junit-vintage-engine</artifactId>
++				</exclusion>
++			</exclusions>
++		</dependency>
++	</dependencies>
++
++	<dependencyManagement>
++		<dependencies>
++			<dependency>
++				<groupId>org.springframework.cloud</groupId>
++				<artifactId>spring-cloud-dependencies</artifactId>
++				<version>${spring-cloud.version}</version>
++				<type>pom</type>
++				<scope>import</scope>
++			</dependency>
++		</dependencies>
++	</dependencyManagement>
++
++	<build>
++		<plugins>
++			<plugin>
++				<groupId>org.springframework.boot</groupId>
++				<artifactId>spring-boot-maven-plugin</artifactId>
++			</plugin>
++		</plugins>
++	</build>
++
++</project>
+Index: gulimall-product/src/main/java/com/atguigu/gulimall/gulimallproduct/GulimallProductApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-product/src/main/java/com/atguigu/gulimall/gulimallproduct/GulimallProductApplication.java	(date 1603457514176)
++++ gulimall-product/src/main/java/com/atguigu/gulimall/gulimallproduct/GulimallProductApplication.java	(date 1603457514176)
+@@ -0,0 +1,13 @@
++package com.atguigu.gulimall.gulimallproduct;
++
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++
++@SpringBootApplication
++public class GulimallProductApplication {
++
++	public static void main(String[] args) {
++		SpringApplication.run(GulimallProductApplication.class, args);
++	}
++
++}
+Index: gulimall-product/src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- gulimall-product/src/main/resources/application.properties	(date 1603457514178)
++++ gulimall-product/src/main/resources/application.properties	(date 1603457514178)
+@@ -0,0 +1,1 @@
++
+Index: gulimall-product/src/test/java/com/atguigu/gulimall/gulimallproduct/GulimallProductApplicationTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-product/src/test/java/com/atguigu/gulimall/gulimallproduct/GulimallProductApplicationTests.java	(date 1603457514170)
++++ gulimall-product/src/test/java/com/atguigu/gulimall/gulimallproduct/GulimallProductApplicationTests.java	(date 1603457514170)
+@@ -0,0 +1,13 @@
++package com.atguigu.gulimall.gulimallproduct;
++
++import org.junit.jupiter.api.Test;
++import org.springframework.boot.test.context.SpringBootTest;
++
++@SpringBootTest
++class GulimallProductApplicationTests {
++
++	@Test
++	void contextLoads() {
++	}
++
++}
+Index: gulimall-product/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-product/pom.xml	(date 1603457514180)
++++ gulimall-product/pom.xml	(date 1603457514180)
+@@ -0,0 +1,66 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++	<parent>
++		<groupId>org.springframework.boot</groupId>
++		<artifactId>spring-boot-starter-parent</artifactId>
++		<version>2.3.4.RELEASE</version>
++		<relativePath/> <!-- lookup parent from repository -->
++	</parent>
++	<groupId>com.atguigu.gulimall</groupId>
++	<artifactId>gulimall-product</artifactId>
++	<version>0.0.1-SNAPSHOT</version>
++	<name>gulimall-product</name>
++	<description>谷粒商城-商品服务</description>
++
++	<properties>
++		<java.version>1.8</java.version>
++		<spring-cloud.version>Hoxton.SR8</spring-cloud.version>
++	</properties>
++
++	<dependencies>
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-web</artifactId>
++		</dependency>
++		<dependency>
++			<groupId>org.springframework.cloud</groupId>
++			<artifactId>spring-cloud-starter-openfeign</artifactId>
++		</dependency>
++
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-test</artifactId>
++			<scope>test</scope>
++			<exclusions>
++				<exclusion>
++					<groupId>org.junit.vintage</groupId>
++					<artifactId>junit-vintage-engine</artifactId>
++				</exclusion>
++			</exclusions>
++		</dependency>
++	</dependencies>
++
++	<dependencyManagement>
++		<dependencies>
++			<dependency>
++				<groupId>org.springframework.cloud</groupId>
++				<artifactId>spring-cloud-dependencies</artifactId>
++				<version>${spring-cloud.version}</version>
++				<type>pom</type>
++				<scope>import</scope>
++			</dependency>
++		</dependencies>
++	</dependencyManagement>
++
++	<build>
++		<plugins>
++			<plugin>
++				<groupId>org.springframework.boot</groupId>
++				<artifactId>spring-boot-maven-plugin</artifactId>
++			</plugin>
++		</plugins>
++	</build>
++
++</project>
+Index: gulimall-ware/src/main/java/com/atguigu/gulimall/gulimallware/GulimallWareApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-ware/src/main/java/com/atguigu/gulimall/gulimallware/GulimallWareApplication.java	(date 1603457795144)
++++ gulimall-ware/src/main/java/com/atguigu/gulimall/gulimallware/GulimallWareApplication.java	(date 1603457795144)
+@@ -0,0 +1,13 @@
++package com.atguigu.gulimall.gulimallware;
++
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++
++@SpringBootApplication
++public class GulimallWareApplication {
++
++	public static void main(String[] args) {
++		SpringApplication.run(GulimallWareApplication.class, args);
++	}
++
++}
+Index: gulimall-ware/src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- gulimall-ware/src/main/resources/application.properties	(date 1603457795146)
++++ gulimall-ware/src/main/resources/application.properties	(date 1603457795146)
+@@ -0,0 +1,1 @@
++
+Index: gulimall-ware/src/test/java/com/atguigu/gulimall/gulimallware/GulimallWareApplicationTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gulimall-ware/src/test/java/com/atguigu/gulimall/gulimallware/GulimallWareApplicationTests.java	(date 1603457795138)
++++ gulimall-ware/src/test/java/com/atguigu/gulimall/gulimallware/GulimallWareApplicationTests.java	(date 1603457795138)
+@@ -0,0 +1,13 @@
++package com.atguigu.gulimall.gulimallware;
++
++import org.junit.jupiter.api.Test;
++import org.springframework.boot.test.context.SpringBootTest;
++
++@SpringBootTest
++class GulimallWareApplicationTests {
++
++	@Test
++	void contextLoads() {
++	}
++
++}
